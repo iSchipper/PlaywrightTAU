@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import exp from 'constants';
 
 const homeUrl = 'https://playwright.dev/';
 
@@ -35,5 +36,11 @@ test('get started link', async ({ page }) => {
 test('Check Java page', async ({page}) => {
   await page.goto(homeUrl);
   await page.getByRole('link', {name: 'Get started'}).click();
-  await page.hover('a[class="navbar__link"]');
-})
+  await page.getByRole('button', {name: 'Node.js'}).hover();
+  await page.getByText('Java', {exact: true}).click();
+  // expect(page.url()).toBe('https://playwright.dev/java/docs/intro');
+  await expect(page).toHaveURL('https://playwright.dev/java/docs/intro');
+  await expect(page.getByText('Installing Playwright', { exact: true })).toBeHidden();
+  const javaIntroText = `Playwright is distributed as a set of Maven modules.`
+  await expect(page.getByText(javaIntroText)).toBeVisible();
+});
