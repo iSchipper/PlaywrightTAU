@@ -16,7 +16,7 @@ test('get started link', async ({ page }) => {
   // Click the get started link.
   await page.getByRole('link', { name: 'Get started' }).click();
 
-  // Expects page to have a heading with the name of Installation.
+  // Expects page to have a heading with the name 'Installation'.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
@@ -33,12 +33,11 @@ test('get started link', async ({ page }) => {
  * as described below. If you're not familiar with Maven please refer to its documentation.'
  */
 
-test('Check Java page', async ({page}) => {
+test.only('Check Java page', async ({page}) => {
   await page.goto(homeUrl);
   await page.getByRole('link', {name: 'Get started'}).click();
   await page.getByRole('button', {name: 'Node.js'}).hover();
   await page.getByText('Java', {exact: true}).click();
-  // expect(page.url()).toBe('https://playwright.dev/java/docs/intro');
   await expect(page).toHaveURL('https://playwright.dev/java/docs/intro');
   await expect(page.getByText('Installing Playwright', { exact: true })).toBeHidden();
   const javaIntroText = `Playwright is distributed as a set of Maven modules.`
