@@ -28,7 +28,7 @@ test.describe('Playwright website', () => {
     await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
     });
     
-  test.only('Check Java page', async ({page}) => {
+  test('Check Java page', async ({page}) => {
     await clickGetStarted(page);
     await page.getByRole('button', {name: 'Node.js'}).hover();
     await page.getByText('Java', {exact: true}).click();
