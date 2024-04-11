@@ -33,7 +33,7 @@ test('get started link', async ({ page }) => {
  * as described below. If you're not familiar with Maven please refer to its documentation.'
  */
 
-test.only('Check Java page', async ({page}) => {
+test('Check Java page', async ({page}) => {
   await page.goto(homeUrl);
   await page.getByRole('link', {name: 'Get started'}).click();
   await page.getByRole('button', {name: 'Node.js'}).hover();
